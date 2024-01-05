@@ -1,0 +1,95 @@
+﻿@page "{email}/WithdrawPage"
+@model ATM_Replica.Pages.WithdrawPageModel
+@{
+}
+
+<header>
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow mb-3">
+        <div class="container">
+            <a class="navbar-brand" asp-area="" asp-page="/Index">ATM_Replica</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse d-sm-inline-flex justify-content-end mt-2 mt-md-0">
+                <ul class="navbar-nav align-Items-center gap-md-3">
+                    <li class="nav-item">
+                        <p class="nav-link fw-bold my-0">@Model.Email</p>
+                    </li>
+                    <li class="nav-item">
+                        <p class="nav-link fw-bold my-0">@Model.Balance</p>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fw-bold" asp-route-Email="@Model.Email" asp-page="./UserDashboard">DashBoard</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+
+<section class="d-flex flex-md-row">
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header btn-purple text-white">
+                        <h4 class="mb-0">Withdraw Form</h4>
+                    </div>
+                    <div class="card-body">
+                        <form method="post">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <div class="form-group form-floating">
+                                <input type="number" class="form-control" asp-for="Amount" value="" required>
+                                <label for="Amount">Amount</label>
+                            </div>
+                            <button type="submit" class="btn btn-purple btn-block btn-lg mt-3" data-bs-toggle="modal" data-bs-target="#myModal">Withdraw</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    @if (Model.WithdrawAmount != null && Model.Balance - Model.Amount > 0)
+    {
+
+        <div class="col-md-5 mx-2" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div class="modal-header">
+                            <h5 class="modal-title text-success"><i class="bi bi-check-circle fs-5 text-success"></i>Transaction history.</h5>
+                        </div>
+                       <div class="d-flex flex-column align-self-start px-3">
+                            <h6 class="text-warning fw-bold">DEBIT!</h6>
+                            <h6>Date/Time : @Model.WithdrawAmount.TransactionDateTime</h6>
+                            <h6>Acc : @Model.Email</h6>
+                            <h6>Amount: @Model.WithdrawAmount.amount</h6>
+                            <h6>Balance: @Model.Balance</h6>
+                            <hr>
+                       </div>
+                    </div>
+                    <div class="modal-footer">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    }
+
+</section>
+
+
+
+
+
+
+
+
+
+ 

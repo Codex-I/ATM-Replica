@@ -1,0 +1,38 @@
+﻿@page "{email}/CheckBalance"
+@model ATM_Replica.Pages.UserTransactions.CheckBalanceModel
+@{
+}
+
+
+<header>
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow mb-5">
+        <div class="container">
+            <a class="navbar-brand" asp-area="" asp-page="/Index">ATM_Replica</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse d-sm-inline-flex justify-content-end mt-2 mt-md-0">
+                <ul class="navbar-nav align-Items-center gap-md-3">
+                    <li class="nav-item">
+                        <p class="nav-link fw-bold my-0">@Model.Email</p>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fw-bold" asp-route-Email="@Model.Email" asp-page="./UserDashboard">DashBoard</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+
+
+
+
+<div class="d-flex justify-content-center align-items-center btn-purple mt-5 text-light">
+    <div class="text-center my-3">
+        <h3 class="mb-3 fw-bold">Account Balance:</h3>
+        <p class="fs-1 fw-bold">@Model.Balance</p>
+    </div>
+</div>

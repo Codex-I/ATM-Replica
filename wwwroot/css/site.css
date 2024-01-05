@@ -1,0 +1,83 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+.welcome-section {
+    min-height: 100vh;
+}
+.welcome-background {
+    background-image: url('../lib/Images/welcome-image.png') !important;
+    opacity: 0.8 !important;
+    background-position: center;
+    background-color: rgba(100, 50, 150)!important;
+    background-size: cover;
+    background-blend-mode: overlay !important;
+   
+}
+.button-color {
+    background-color: rgba(100, 50, 150) !important;
+}
+.sign-color {
+    color: rgba(100, 30, 150)!important;
+}
+.btn-purple {
+    background-color: mediumpurple;
+    border-color: mediumpurple;
+    color: white;
+}
+.modal-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-card {
+    background-color: #fff;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    text-align: center;
+    max-width: 20rem;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.modal-title {
+    margin: 0;
+}
+
+.modal-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.bi {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}

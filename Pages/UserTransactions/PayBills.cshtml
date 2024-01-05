@@ -1,0 +1,81 @@
+﻿@page "{email}/PayBills"
+@model ATM_Replica.Pages.UserTransactions.PayBillsModel
+@{
+    
+}
+
+<header>
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow mb-3">
+        <div class="container">
+            <a class="navbar-brand" asp-area="" asp-page="/Index">ATM_Replica</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse d-sm-inline-flex justify-content-end mt-2 mt-md-0">
+                <ul class="navbar-nav align-Items-center gap-md-3">
+                    <li class="nav-item">
+                        <p class="nav-link fw-bold my-0">@Model.Email</p>
+                    </li>
+                    <li class="nav-item">
+                        <p class="nav-link fw-bold my-0">@Model.Balance</p>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fw-bold" asp-route-Email="@Model.Email" asp-page="./UserDashboard">DashBoard</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+
+
+<div class="col-md-6 mx-auto">
+    <h3 class="text-black text-center">Pay Bills</h3>
+    <form method="post" class="">
+        <div class="text-danger text-center" asp-validation-summary="ModelOnly"></div>
+        <div class="form-group mb-3">
+            <label for="SelectedBiller">select Biller:</label>
+            <select class="form-control" asp-for="SelectedBiller" asp-page-handler="index">
+                <option>Tv Subscription</option>
+                <option>Data Purchase</option>
+                <option>Airtime Purchase</option>
+            </select>
+        </div>
+        <div class="form-group mb-3">
+            <label for="RecieverAccountEmail">Agent Account Email:</label>
+            <input type="email" asp-for="RecieverAccountEmail" class="form-control" />
+        </div>
+        
+       
+        
+       
+
+        <div class="form-group mb-3">
+            <label asp-for="Amount">Amount:</label>
+            <input asp-for="Amount" class="form-control" />
+        </div>
+
+        <div class="d-flex justify-content-center mt-4">
+            <button class="btn btn-purple btn-lg" type="submit">Transfer</button>
+        </div>
+    </form>
+</div>
+
+
+
+@if (Model.BillTransaction != null && Model.InitialBalance - Model.Amount >= 0)
+{
+    <div class="card col-6 mx-auto my-4 shadow-sm">
+        <div class="card-body d-flex flex-column align-items-center">
+            <h3 class="card-title text-success fw-bold">Transaction Details</h3>
+            <h4>Pay Bill For: <span class="fs-5">@Model.SelectedBiller</span></h4>
+            <h4>Send to: <span class="fs-5">@Model.RecieverAccountEmail</span></h4>
+            <h4>Amount: <span class="fs-5">@Model.Amount</span></h4>
+            <h4>Time of Transaction: <span class="fs-5">@Model.BillTransaction.TransactionDateTime</span></h4>
+            <h4>Remaining Balance: <span class="fs-5">@Model.Balance</span></h4>
+        </div>
+    </div>
+    
+};
